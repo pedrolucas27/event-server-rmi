@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.time.format.DateTimeFormatter;
 
 public class ClientImpl extends UnicastRemoteObject implements Serializable, Client {
 
@@ -16,7 +17,10 @@ public class ClientImpl extends UnicastRemoteObject implements Serializable, Cli
 
     @Override
     public void notifyEvent(Event event) throws RemoteException{
-        listModel.addElement(event.getEventType().getName()+ " - " + event.getDescription());
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String strDate = dtf.format(event.getDate());
+
+        listModel.addElement(event.getEventType().getName()+ " - " + event.getDescription() + " - " + strDate);
     }
 
 }

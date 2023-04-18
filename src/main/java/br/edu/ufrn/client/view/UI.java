@@ -21,7 +21,9 @@ public class UI {
     private JFrame jFrame;
     private DefaultListModel<String> listModel;
 
-    private static final Integer CLIENT_CODE = new Random().nextInt(1000);
+    private final Integer CLIENT_CODE = new Random().nextInt(1000);
+
+    private final List<EventType> topics = List.of(EventType.POLICE_OFFICER, EventType.FIRE_DEPARTMENT, EventType.CIVIL_DEFENSE);
 
     public UI(Server server) {
         this.server = server;
@@ -72,10 +74,9 @@ public class UI {
         title.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
         mainPanel.add(title);
 
-        List<EventType> options = List.of(EventType.POLICE_OFFICER, EventType.FIRE_DEPARTMENT, EventType.CIVIL_DEFENSE);
         List<JCheckBox> checkboxes = new ArrayList<>();
 
-        options.forEach(it -> {
+        topics.forEach(it -> {
             JCheckBox checkbox = new JCheckBox(it.getName());
             checkbox.setFont(new Font("Arial", Font.PLAIN, 14));
             checkbox.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -183,7 +184,7 @@ public class UI {
         JList<String> list = new JList<>(listModel);
 
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setPreferredSize(new Dimension(600, 200));
+        scrollPane.setPreferredSize(new Dimension(650, 200));
 
         tab2.add(scrollPane);
 
@@ -192,7 +193,6 @@ public class UI {
 
     public void start(){
         registrationInterest();
-        jFrame.setVisible(Boolean.TRUE);
     }
 
 }
