@@ -17,7 +17,6 @@ public class ClientImpl extends UnicastRemoteObject implements Serializable, Cli
     @Override
     public void notifyEvent(Event event) throws RemoteException{
         listModel.addElement(event.getEventType().getName()+ " - " + event.getDescription());
-        //System.out.println(event.getEventType().getName()+ "-->" + event.getDescription());
     }
 
 }
