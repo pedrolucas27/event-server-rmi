@@ -26,4 +26,3 @@ A arquitetura pode ser ilustrada a partir da seguinte imagem:
 
 
 - **Interface Remota:** A interface remota é a interface Java que define os métodos que podem ser invocados remotamente pelos clientes no servidor.
-
